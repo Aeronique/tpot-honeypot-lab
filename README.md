@@ -15,7 +15,7 @@ Welcome to part one of my honeypot analysis project. In this guide, I'll walk yo
 ## Prerequisites
 
 - A Google Cloud account with a verified payment method  
-- $300 free trial credit (valid for 90 days)  
+- \$300 free trial credit (valid for 90 days)  
 - Basic familiarity with Linux shell and Git  
 - (Recommended) Google Pay enabled on your account
 
@@ -24,7 +24,7 @@ Welcome to part one of my honeypot analysis project. In this guide, I'll walk yo
 1. **Machine Type**  
    - Minimum: 8 GB RAM (16 GB recommended)  
    - Storage: 128 GB boot disk  
-   - Estimated cost: ~$50/month (covered by free trial)
+   - Estimated cost: ~\$50/month (covered by free trial)
 
 2. **Operating System**  
    - Ubuntu 24.04 LTS Minimal (x86_64)  
@@ -48,7 +48,7 @@ Welcome to part one of my honeypot analysis project. In this guide, I'll walk yo
 
 ## T-Pot Installation
 
-SSH into your VM (do **not** switch to root; use your default sudo-enabled user):
+SSH into your VM (do **not** switch to root; use your default sudo-enabled user) and run:
 
 ```bash
 sudo apt update && sudo apt upgrade -y
@@ -56,4 +56,44 @@ sudo apt install git -y
 git clone https://github.com/telekom-security/tpotce
 cd tpotce
 ./install.sh
+# when prompted:
+#   • type 'y' and press Enter
+#   • choose 'h' for HIVE sensors
+#   • enter your desired web UI username/password
+#   • wait for it to finish port remapping
+sudo reboot
 ```
+## Verifying the T-Pot Service
+
+After reboot, verify the service is running:
+
+```bash
+sudo systemctl status tpot
+```
+## Accessing the T-Pot Dashboard
+
+1. Open your browser to `https://<YOUR_VM_IP>:64297`
+2. Accept the risk/continue warning
+3. Log in with the credentials you set
+
+You should now see live attack data flowing into Kibana and the suite of T-Pot analysis tools.
+
+## What I Learned
+
+- How to provision a GCP VM with the right specs for containerized sensors
+- Best practices for OS selection and disk sizing
+- Network hardening via firewall rules and VPC isolation
+- Installing Git under a sudo-enabled non-root user
+- Running the T-Pot installer and verifying service changes (SSH port remapping)
+- Validating browser-based SSH on a custom port and confirming live traffic ingestion
+
+## Next Steps
+
+With the honeypot live, part two will focus on parsing logs, identifying attacker playbooks, and turning raw traffic into actionable insights.
+
+## Author
+
+**Aeronique**  
+Former educator, current Soldier, aspiring Threat Intelligence/DFIR/Blue Team cybersecurity professional
+::contentReference[oaicite:0]{index=0}
+
