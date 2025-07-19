@@ -95,5 +95,6 @@ With the honeypot live, part two will focus on parsing logs, identifying attacke
 
 **Aeronique**  
 Former educator, current Soldier, aspiring Threat Intelligence/DFIR/Blue Team cybersecurity professional
-::contentReference[oaicite:0]{index=0}
+
+https://medium.com/@aeronique
 
